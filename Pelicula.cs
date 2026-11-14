@@ -15,6 +15,7 @@ class Pelicula
     private int runtime;
     private double imdbScore;
     private string language;
+
     public Pelicula(string pTitle, string pGenre, string pPremiere, int pRuntime, double pImdbScore, string pLanguage)
     {
         this.title = pTitle;
@@ -307,8 +308,14 @@ class Pelicula
 
     public void EscribirXmlConLista(List <Pelicula> pelis)
     {
-        rutaXml = "";
+        try
+        {
+            rutaXml = "";
         ComprobarRutaXml();
+
+        //Log del inicio indicando el formato del origen y destino y las rutas
+        Logger.LogInicio("CSV", "XML", RUTACSV, RUTAXML);
+
         XmlWriter xmlWriter = XmlWriter.Create(RUTAXML);
         xmlWriter.WriteStartDocument();
         xmlWriter.WriteStartElement("Peliculas");
@@ -342,10 +349,22 @@ class Pelicula
             xmlWriter.WriteEndElement();
 
             xmlWriter.WriteEndElement();
+
+            //LogPeli registra los datos de las pelis que se procesan
+            Logger.LogPeli(p.TITLE, p.GENRE, p.PREMIERE, p.RUNTIME, p.IMDBSCORE, p.LANGUAGE);
         }
 
         xmlWriter.WriteEndDocument();
         xmlWriter.Close();
+
+        //Dice que ha terminado y muestra la ruta del nuevo fichero
+        Logger.LogFin(RUTAXML);
+        } catch (Exception ex)
+        {
+            Logger.LogError($"Hubo un fallo al escribir el XML: {ex.Message}");
+            Console.WriteLine("Hubo un fallo al escribir el XML: {ex.Message}");
+        }
+        
     }
     public void EscribirCsvConLista(List<Pelicula> pelis)
     {
@@ -353,20 +372,33 @@ class Pelicula
         {
             rutaCsv = "";
             ComprobarRutaCsv();
+
+            //Log del inicio indicando el formato del origen y destino y las rutas
+            Logger.LogInicio("XML", "CSV", RUTAXML, RUTACSV);
+
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Title,Genre,Premiere,Runtime,IMDB_Score,Language");
             foreach (Pelicula p in pelis)
             {
                 //Para que el csv que se crea no este descuadrado
                 string linea = $"\"{p.TITLE}\",\"{p.GENRE}\",\"{p.PREMIERE}\",{p.RUNTIME},{p.IMDBSCORE.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"{p.LANGUAGE}\"";                sb.AppendLine(linea);
+            
+                //LogPeli registra los datos de las pelis que se procesan
+                Logger.LogPeli(p.TITLE, p.GENRE, p.PREMIERE, p.RUNTIME, p.IMDBSCORE, p.LANGUAGE);
+        
             }
 
             File.WriteAllText(RUTACSV, sb.ToString());
+
+            //Dice que ha terminado y muestra la ruta del nuevo fichero
+            Logger.LogFin(RUTACSV);
+
             Console.WriteLine("Archivo CSV creado correctamente en: " + RUTACSV);
             Thread.Sleep(1000);
         }
         catch (Exception ex)
         {
+            Logger.LogError($"Hubo un fallo al escribir el CSV: {ex.Message}");
             Console.WriteLine("Hubo un fallo al escribir el CSV: " + ex.Message);
         }
     }

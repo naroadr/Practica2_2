@@ -12,3 +12,9 @@ C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\refint\Practica
 C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\Practica2_2.pdb
 C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\Practica2_2.genruntimeconfig.cache
 C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\ref\Practica2_2.dll
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\bin\Debug\net10.0\System.Diagnostics.EventLog.dll
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.dll
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\Practica2_2.csproj.AssemblyReference.cache
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\Practica2_2.sourcelink.json
+C:\Users\naroa\Desktop\accesoDatos\Practica2_2\obj\Debug\net10.0\Practica.599D9286.Up2Date

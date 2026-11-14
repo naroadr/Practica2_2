@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZaXnTmjtu/U=",
+  "dgSpecHash": "8mq/WsBdGUU=",
   "success": true,
   "projectFilePath": "C:\\Users\\naroa\\Desktop\\accesoDatos\\Practica2_2\\Practica2_2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\naroa\\.nuget\\packages\\system.diagnostics.eventlog\\11.0.0\\system.diagnostics.eventlog.11.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
