@@ -311,54 +311,54 @@ class Pelicula
         try
         {
             rutaXml = "";
-        ComprobarRutaXml();
+            ComprobarRutaXml();
 
-        //Log del inicio indicando el formato del origen y destino y las rutas
-        Logger.LogInicio("CSV", "XML", RUTACSV, RUTAXML);
+            //Log del inicio indicando el formato del origen y destino y las rutas
+            Logger.LogInicio("CSV", "XML", RUTACSV, RUTAXML);
 
-        XmlWriter xmlWriter = XmlWriter.Create(RUTAXML);
-        xmlWriter.WriteStartDocument();
-        xmlWriter.WriteStartElement("Peliculas");
+            XmlWriter xmlWriter = XmlWriter.Create(RUTAXML);
+            xmlWriter.WriteStartDocument();
+            xmlWriter.WriteStartElement("Peliculas");
 
-        foreach (Pelicula p in pelis)
-        {
-            xmlWriter.WriteStartElement("Pelicula");
+            foreach (Pelicula p in pelis)
+            {
+                xmlWriter.WriteStartElement("Pelicula");
 
-            xmlWriter.WriteStartElement("Title");
-            xmlWriter.WriteString(p.TITLE);
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("Title");
+                xmlWriter.WriteString(p.TITLE);
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement("Genre");
-            xmlWriter.WriteString(p.GENRE);
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("Genre");
+                xmlWriter.WriteString(p.GENRE);
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement("Premiere");
-            xmlWriter.WriteString(p.PREMIERE);
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("Premiere");
+                xmlWriter.WriteString(p.PREMIERE);
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement("Runtime");
-            xmlWriter.WriteString(p.RUNTIME.ToString());
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("Runtime");
+                xmlWriter.WriteString(p.RUNTIME.ToString());
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement("IMDB_Score");
-            xmlWriter.WriteString(p.IMDBSCORE.ToString());
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("IMDB_Score");
+                xmlWriter.WriteString(p.IMDBSCORE.ToString());
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement("Language");
-            xmlWriter.WriteString(p.LANGUAGE);
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteStartElement("Language");
+                xmlWriter.WriteString(p.LANGUAGE);
+                xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteEndElement();
+                xmlWriter.WriteEndElement();
 
-            //LogPeli registra los datos de las pelis que se procesan
-            Logger.LogPeli(p.TITLE, p.GENRE, p.PREMIERE, p.RUNTIME, p.IMDBSCORE, p.LANGUAGE);
-        }
+                //LogPeli registra los datos de las pelis que se procesan
+                Logger.LogPeli(p.TITLE, p.GENRE, p.PREMIERE, p.RUNTIME, p.IMDBSCORE, p.LANGUAGE);
+            }
 
-        xmlWriter.WriteEndDocument();
-        xmlWriter.Close();
+            xmlWriter.WriteEndDocument();
+            xmlWriter.Close();
 
-        //Dice que ha terminado y muestra la ruta del nuevo fichero
-        Logger.LogFin(RUTAXML);
+            //Dice que ha terminado y muestra la ruta del nuevo fichero
+            Logger.LogFin(RUTAXML);
         } catch (Exception ex)
         {
             Logger.LogError($"Hubo un fallo al escribir el XML: {ex.Message}");
